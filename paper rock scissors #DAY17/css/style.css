@@ -1,0 +1,123 @@
+/* start variables */
+:root {
+    --MainColor: #90C9BF;
+    --ResultsButtonColor: #7100A8;
+    --ShadowColor: #0000003d;
+}
+/* end variables */
+/* start global rules */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--MainColor);
+}
+.container {
+    width: 80%;
+    height: 55vh;
+    display: flex;
+    gap: 25px;
+    overflow: hidden;
+    position: relative;
+}
+/* end global rules */
+.container div {
+    width: calc(100% / 3);
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    height: fit-content;
+}
+.container div::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 20%;
+    background-color: var(--ShadowColor);
+    top: 91%;
+    left: 44%;
+    transform: rotate3d(-4, 1, 1, 70deg) translateX(-50%);
+    border-radius: 50%;
+}
+.container div img {
+    max-width: 90%;
+}
+.results {
+    color: white;
+    position: absolute !important;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100% !important;
+    display: none;
+    transition: 0.3s;
+    cursor: initial !important;
+}
+.results::before {
+    display: none;
+}
+.results__heading {
+    font-size: 25px;
+    color: white;
+    letter-spacing: 2px;
+    margin: 35px 0;
+    text-transform: capitalize;
+}
+.results__score {
+    display: block;
+    height: 50px;
+    width: 50px;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 0 25px;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+.results__button {
+    background: var(--ResultsButtonColor);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 19px;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+.left {
+    transform: translateX(-100%);
+}
+.opacity {
+    opacity: 0;
+}
+.clicked {
+    animation: img 0.3s ease;
+}
+.winner {
+    animation: win 0.5s ease;
+}
+.paper-winner {
+    animation: Paperwin 0.5s ease;
+}
+@keyframes img {
+    50%{transform: translateY(-15px);}
+    100%{transform: translateY(0);}
+}
+@keyframes win {
+    25%{transform: translateY(-15px);}
+    50%{transform: translateY(0);}
+    75%{transform: translateY(-15px);}
+    100%{transform: translateY(0);}
+}
+@keyframes Paperwin {
+    25%{transform: translateY(-15px) translateX(-100%);}
+    50%{transform: translateY(0) translateX(-100%);}
+    75%{transform: translateY(-15px) translateX(-100%);}
+    100%{transform: translateY(0) translateX(-100%);}
+}
